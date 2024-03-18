@@ -59,7 +59,7 @@ def get_keys(pssh, lic_url):
 if __name__ == '__main__':
     post()
 
-    tld = "de"
+    tld = "com"
 
     inp = input("ASIN / Prime Video Link: ")
     asin = get_asin(inp) if inp.startswith("http") else inp
