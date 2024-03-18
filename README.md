@@ -9,8 +9,8 @@ There are two versions:
 0. Install Python (3.7.0)
 1. Install the requirements.txt file
 2. Drop the file in either of those folders
-3. Add an L3 CDM in te right folder
+3. Add an L3 CDM in the right folder
 4. Add the 3 pre-defined cookies to the headers.py file
 5. Add N_m3u8DL-RE to the folder if you wish to have the content downloaded, decrypted and muxed automatically
-6. Change the tld variable to you country TLD (i.e: com = USA, etc.; de = Germany; ...)
+6. Change the TLD variable to you country's TLD (i.e: com = USA, etc.; de = Germany; ...)
 7. Run the script and provide a Prime Video Link.
