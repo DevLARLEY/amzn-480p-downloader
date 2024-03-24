@@ -1,4 +1,11 @@
-# amazon eu
+# amazon uk
+cookies = {
+    'ubid-acbuk': '',
+    'x-acbuk': '',
+    'at-acbuk': ''
+}
+
+# amazon de
 cookies = {
     'ubid-acbde': '',
     'x-acbde': '',
