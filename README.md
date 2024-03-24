@@ -5,7 +5,7 @@ Downloads any Video from Prime Video in 480p quality. (Only requires an L3 CDM)
 # Requirements
 + pywidevine or WKS-KEYS
 + L3 CDM
-+ For automatic downloading, decrypting and muxing.
++ (N_m3u8DL-RE for automatic downloading, decrypting and muxing.)
 
 # Known supported websites
 + amazon.com
