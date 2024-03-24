@@ -19,4 +19,4 @@ There are two versions:
 4. Add the 3 pre-defined cookies to the headers.py file
 5. Add N_m3u8DL-RE to the folder if you wish to have the content downloaded, decrypted and muxed automatically
 6. Change the TLD variable to you country's TLD (i.e: com = USA; de = Germany; co.uk = UK)
-7. Run the script and provide a Prime Video Link.
+7. Run the script and provide a Prime Video Link / [ASIN](https://en.wikipedia.org/wiki/Amazon_Standard_Identification_Number).
