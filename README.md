@@ -2,6 +2,11 @@
 Downloads any Video from Prime Video in 480p quality. (Only requires an L3 CDM)
 + Should work with 1080p if you have an L1 CDM by commenting out '&supportedDRMKeyScheme=DUAL_KEY' in get_playback_resources()
 
+# Requirements
++ pywidevine or WKS-KEYS
++ L3 CDM
++ For automatic downloading, decrypting and muxing.
+
 # Known supported websites
 + amazon.com
 + amazon.de
