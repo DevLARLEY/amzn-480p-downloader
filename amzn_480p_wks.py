@@ -13,7 +13,11 @@ def post():
 
 def get_asin(url):
     a = url.split("/")
-    return a[a.index("dp")+1]
+    if "dp" in a:
+        return a[a.index("dp")+1]
+    if "gp" in a:
+        return a[a.index("gp")+1]
+    return
 
 
 def get_playback_resources(asin):
@@ -67,6 +71,7 @@ if __name__ == '__main__':
 
     if 'error' in j:
         print("Unable to get playback resources.")
+        print(j)
         sys.exit()
 
     catalog = j["catalogMetadata"]["catalog"]
