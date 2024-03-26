@@ -61,7 +61,8 @@ def get_keys(pssh, lic_url):
     try:
         lic = response_json['widevine2License']['license']
     except Exception:
-        print("Unable to obtain license from server response.")
+        print("Unable to obtain license from server response:")
+        print(response_json)
         sys.exit()
 
     cdm.parse_license(session_id, lic)
