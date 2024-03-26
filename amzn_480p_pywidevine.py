@@ -15,11 +15,15 @@ def post():
 
 def get_asin(url):
     a = url.split("/")
-    return a[a.index("dp")+1]
+    if "dp" in a:
+        return a[a.index("dp")+1]
+    if "gp" in a:
+        return a[a.index("gp")+1]
+    return
 
 
 def get_playback_resources(asin):
-    resource_url = (f"https://atv-ps{'' if tld is 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources" +
+    resource_url = (f"https://atv-ps{'' if tld == 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources" +
     "?deviceID=" +
     "&deviceTypeID=AOAGZA014O5RE" +
     "&firmware=1" +
@@ -63,8 +67,6 @@ def get_keys(pssh, lic_url):
     cdm.parse_license(session_id, lic)
     keys = [f"{key.kid.hex}:{key.key.hex()}" for key in cdm.get_keys(session_id) if key.type != 'SIGNING']
 
-    print(keys)
-
     cdm.close(session_id)
     return keys
     
@@ -80,6 +82,7 @@ if __name__ == '__main__':
 
     if 'error' in j:
         print("Unable to get playback resources.")
+        print(j)
         sys.exit()
 
     catalog = j["catalogMetadata"]["catalog"]
@@ -93,6 +96,7 @@ if __name__ == '__main__':
         urls = j["playbackUrls"]["urlSets"]
     except KeyError:
         print("No manifest urls found.")
+        print(j)
         sys.exit()
 
     pssh = None
@@ -102,7 +106,7 @@ if __name__ == '__main__':
         mpd_url = m
         mpd = requests.get(url=m)
         if mpd.status_code == 200:
-            res = re.findall('<cenc:pssh.*>.*<.*/cenc:pssh>', mpd.text)
+            res = re.findall('<cenc:pssh.*>.*<.*/cenc:pssh>', mpd.text)  # VERY slow
             pssh = str(min([x[11:-12] for x in res], key=len)).split(">")[-1].split("<")[-1] if res else None
             if pssh is not None:
                 break
@@ -113,7 +117,7 @@ if __name__ == '__main__':
 
     print(f"\n{mpd_url}\n")
 
-    lic_url = (f"https://atv-ps{'' if tld is 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources?deviceID=" +
+    lic_url = (f"https://atv-ps{'' if tld == 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources?deviceID=" +
         "&deviceTypeID=AOAGZA014O5RE" +
         "&firmware=1" +
         f"&asin={asin}" +
