@@ -2,7 +2,9 @@
 import glob
 import urllib.parse
 
-from pywidevine import Device, Cdm, PSSH
+from pywidevine.device import Device
+from pywidevine.pssh import PSSH
+from pywidevine.cdm import Cdm
 
 import headers
 import os, sys, json
