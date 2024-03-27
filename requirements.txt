@@ -3,3 +3,4 @@ pycryptodomex==3.20.0
 pyfiglet==0.8.post1
 Requests==2.31.0
 xmltodict==0.13.0
+browser-cookie3==0.19.1
