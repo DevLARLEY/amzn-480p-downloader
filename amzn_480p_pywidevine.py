@@ -62,7 +62,7 @@ def get_asin(url):
 
 
 def get_playback_resources(asin):
-    resource_url = (f"https://atv-ps{'' if tld is 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources" +
+    resource_url = (f"https://atv-ps{'' if tld == 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources" +
                     "?deviceID=" +
                     "&deviceTypeID=AOAGZA014O5RE" +
                     "&firmware=1" +
@@ -217,7 +217,7 @@ if __name__ == '__main__':
     print(f"\n{mpd_url}\n")
 
     lic_url = (
-            f"https://atv-ps{'' if tld is 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources?deviceID=" +
+            f"https://atv-ps{'' if tld == 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources?deviceID=" +
             "&deviceTypeID=AOAGZA014O5RE" +
             "&firmware=1" +
             f"&asin={asin}" +
