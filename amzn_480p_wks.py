@@ -59,7 +59,7 @@ def get_asin(url):
 
 
 def get_playback_resources(asin):
-    resource_url = (f"https://atv-ps{'' if tld is 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources" +
+    resource_url = (f"https://atv-ps{'' if tld == 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources" +
                     "?deviceID=" +
                     "&deviceTypeID=AOAGZA014O5RE" +
                     "&firmware=1" +
@@ -91,7 +91,8 @@ def get_keys(pssh, lic_url):
     try:
         lic = response_json['widevine2License']['license']
     except Exception:
-        print("Unable to obtain license from server response.")
+        print("Unable to obtain license from server response:")
+        print(response_json)
         sys.exit()
     wvdecrypt.update_license(lic)
 
@@ -204,7 +205,7 @@ if __name__ == '__main__':
     print(f"\n{mpd_url}\n")
 
     lic_url = (
-            f"https://atv-ps{'' if tld is 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources?deviceID=" +
+            f"https://atv-ps{'' if tld == 'com' else '-eu'}.amazon.{tld}/cdp/catalog/GetPlaybackResources?deviceID=" +
             "&deviceTypeID=AOAGZA014O5RE" +
             "&firmware=1" +
             f"&asin={asin}" +
