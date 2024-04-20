@@ -1,5 +1,5 @@
 # amzn-480p-downloader
-Downloads any Video from Prime Video in 480p quality. (Only requires an L3 CDM)
+Downloads any video from Prime Video that you've bought/rented/can watch in 480p quality. (Only requires an L3 CDM)
 + Should work with 1080p if you have an L1 CDM by commenting out '&supportedDRMKeyScheme=DUAL_KEY' in get_playback_resources()
 
 # Requirements
